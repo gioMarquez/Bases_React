@@ -18,7 +18,7 @@ export const GifExpertApp = () => {
       <button className="bg-green-800 text-white font-bold p-2 " onClick={onAddCategory}>Agregar</button>
       <ol>
         {categories.map((category, index) => {
-          return <li key={index}> {category}</li>;
+          return <li key={index}> { index = index + 1 } {category}</li>;
         })}
       </ol>
       {/* Gif Item */}
