@@ -65,4 +65,9 @@
   .card img {
     width: 100%;
   }
+
+
+  .titles {
+    @apply text-3xl font-bold text-emerald-800
+  }
   

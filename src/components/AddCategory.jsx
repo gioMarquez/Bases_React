@@ -1,35 +1,35 @@
 import { useState } from "react";
 
-export const AddCategory = (setCategories) => {
-  const [inputValue, setInputValue] = useState("One Punch Man");
+export const AddCategory = ({ onNewCategory, categories }) => {
+  const [inputValue, setInputValue] = useState("");
 
   const onInputChange = ({ target }) => {
     setInputValue(target.value);
   };
 
-  const onSubmit = ( event ) => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    if( inputValue.trim().length <= 1 ) return;
+    if (inputValue.trim().length <= 1) return;
 
-    setCategories( categories => [ inputValue, ...categories ]);
-
+    onNewCategory(inputValue.trim());
+    setInputValue("");
   };
 
-   const handleKeyDown = (e) => {
-    if (e.keyCode === 13) {  //Se dispara con el codigo de "Enter"
-      console.log(inputValue);
+  const handleKeyDown = (e) => {
+    //Se dispara con la tecla "Enter"
+    if (e.keyCode === 13) {
     }
   };
 
   return (
-    <form onSubmit={ (event) => onSubmit(event) }>
-        <input
-          type="text"
-          placeholder="Buscar gifs..."
-          value={inputValue}
-          onChange={onInputChange}
-          onKeyDown={handleKeyDown}
-        />
+    <form onSubmit={onSubmit}>
+      <input
+        type="text"
+        placeholder="Buscar gifs..."
+        value={inputValue}
+        onChange={onInputChange}
+        onKeyDown={handleKeyDown}
+      />
     </form>
   );
 };
