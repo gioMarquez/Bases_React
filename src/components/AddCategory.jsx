@@ -7,18 +7,29 @@ export const AddCategory = (setCategories) => {
     setInputValue(target.value);
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = ( event ) => {
     event.preventDefault();
-    console.log(inputValue);
-    setCategories(categories => [inputValue, ...categories])
+    if( inputValue.trim().length <= 1 ) return;
+
+    setCategories( categories => [ inputValue, ...categories ]);
+
+  };
+
+   const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {  //Se dispara con el codigo de "Enter"
+      console.log(inputValue);
+    }
   };
 
   return (
-    <input
-      type="text"
-      placeholder="Buscar gifs..."
-      value={inputValue}
-      onChange={onInputChange}
-    />
+    <form onSubmit={ (event) => onSubmit(event) }>
+        <input
+          type="text"
+          placeholder="Buscar gifs..."
+          value={inputValue}
+          onChange={onInputChange}
+          onKeyDown={handleKeyDown}
+        />
+    </form>
   );
 };
