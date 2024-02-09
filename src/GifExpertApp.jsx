@@ -5,7 +5,7 @@ import { GifGrid } from "./components/GifGrid";
 
 export const GifExpertApp = () => {
   //Hooks de react que actualizan el estado
-  const [categories, setCategories] = useState(["One Punch"]);
+  const [categories, setCategories] = useState(["Dragon Ball"]);
 
   const onAddCategory = (newCategory) => {
     if (categories.includes(newCategory)) return;
@@ -21,6 +21,7 @@ export const GifExpertApp = () => {
 
       {categories.map((category) => (
         <GifGrid key={category} category={category} />
+
       ))}
     </>
   );
